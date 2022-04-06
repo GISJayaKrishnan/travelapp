@@ -134,7 +134,7 @@ const CameraPage = ({ navigation }) => {
                 <View style={styles.cameraModalBg}>
                     <View style={styles.cameraModalView}>
 
-                        <Image>
+                        <Image source={images.conference3} style = {{height : 350,width : '100%'}} resizeMode ='cover'>
 
                         </Image>
                         <TouchableOpacity style={{ width: 100, height: 50,alignSelf:"flex-end"}} onPress={selfiePointsBtn} >

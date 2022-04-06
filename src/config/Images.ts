@@ -15,6 +15,9 @@ const images = {
   BackIcon: require('../../src/assets/images/BackIcon.png'),
   MapMarker: require('../../src/assets/images/MapMarker.png'),
   Destination: require('../../src/assets/images/dest.jpeg'),
+  conference2: require('../../src/assets/images/conference2.jpg'),
+  conference1: require('../../src/assets/images/conference1.jpg'),
+  conference3: require('../../src/assets/images/conference3.jpg'),
 };
 
 export default images;
