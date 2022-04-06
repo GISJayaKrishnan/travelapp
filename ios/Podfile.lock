@@ -1,5 +1,7 @@
 PODS:
   - boost (1.76.0)
+  - BVLinearGradient (2.5.6):
+    - React
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.66.3)
@@ -389,6 +391,7 @@ PODS:
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
+  - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
@@ -483,6 +486,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
+  BVLinearGradient:
+    :path: "../node_modules/react-native-linear-gradient"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -586,6 +591,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: a7c83b31436843459a1961bfd74b96033dc77234
+  BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 831926d9b8bf8166fd87886c4abab286c2422662
   FBLazyVector: de148e8310b8b878db304ceea2fec13f2c02e3a0
@@ -603,10 +609,10 @@ SPEC CHECKSUMS:
   glog: 5337263514dd6f09803962437687240c5dc39aa4
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
-  Permission-Camera: 1f383e3f9a38ba393c63ba9b09a4726f94eda769
-  Permission-MediaLibrary: 7c124414f00246e99036ab6edac350890ca5f009
-  Permission-Microphone: 8d496c068d65f9d4ee599b0fdd7ada102a905acf
-  Permission-PhotoLibrary: 9b75dcdaa23295b99cbe655113aee41bae4c5d52
+  Permission-Camera: 0db4fd6e1c556c1cf47f38b989a8084cea3ec3dd
+  Permission-MediaLibrary: eb4dc997f8d3f81f28940f997651cd1a2bf16149
+  Permission-Microphone: 7b75718196244a6e59dd60f82f12962562c2ea12
+  Permission-PhotoLibrary: 9dcf80d1353d81b9f1e210c34291591236aaf2b6
   RCT-Folly: a21c126816d8025b547704b777a2ba552f3d9fa9
   RCTRequired: 59d2b744d8c2bf2d9bc7032a9f654809adcf7d50
   RCTTypeSafety: d0aaf7ccae5c70a4aaa3a5c3e9e0db97efae760e
@@ -619,15 +625,15 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 433a691aee158533a6a6ee9c86cb4a1684fa2853
   React-jsinspector: d9c8eb0b53f0da206fed56612b289fec84991157
   React-logger: e522e76fa3e9ec3e7d7115b49485cc065cf4ae06
-  react-native-cameraroll: 60ac50a5209777cbccfe8d7a62d0743a9da87060
+  react-native-cameraroll: 2957f2bce63ae896a848fbe0d5352c1bd4d20866
   react-native-create-thumbnail: dedcb7cd3d14a4b6cc2026563197242081edb52b
   react-native-geocoder: 757427682892bb256f3b3745858cc90eba148a8e
   react-native-geolocation-service: c0efb872258ed9240f1003a70fca9e9757e5c785
-  react-native-image-editor: bd67912f38a8e7a895bf6eb8f445acdcefd8fd0c
-  react-native-image-picker: 072cc75ff6d1671882b9572f593dcfb14a721753
+  react-native-image-editor: 9361a215c3991cafbe5e7f28cbbad6e72c9c2705
+  react-native-image-picker: 14910ea6b6a38bd45d1a69cb643b157e6ac142cb
   react-native-maps: d752b0dd0e1951d815b1336332835aab6b4a836f
-  react-native-netinfo: 93558232f9b36bdd298acaa2a687ca1c3bff0f25
-  react-native-safe-area-context: 5cf05f49df9d17261e40e518481f2e334c6cd4b5
+  react-native-netinfo: 87e5bfaf21ea5c6c110941290aa481dd8e849f98
+  react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   React-perflogger: 73732888d37d4f5065198727b167846743232882
   React-RCTActionSheet: 96c6d774fa89b1f7c59fc460adc3245ba2d7fd79
   React-RCTAnimation: 8940cfd3a8640bd6f6372150dbdb83a79bcbae6c
@@ -640,14 +646,14 @@ SPEC CHECKSUMS:
   React-RCTVibration: 50cfe7049167cfc7e83ac5542c6fff0c76791a9b
   React-runtimeexecutor: bbbdb3d8fcf327c6e2249ee71b6ef1764b7dc266
   ReactCommon: 9bac022ab71596f2b0fde1268272543184c63971
-  RNCAsyncStorage: 4b6538222ce3f01f61011f512226ba3aaa0dc336
+  RNCAsyncStorage: ea6b5c280997b2b32a587793163b1f10e580c4f7
   RNCPicker: cb57c823d5ce8d2d0b5dfb45ad97b737260dc59e
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
-  RNPermissions: b3588a19e12bff03fe21bc46911fd32343666dc0
+  RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
   RNScreens: 03ba504f8c98607ad1f07808e71040e0afa335ec
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
-  toolbar-android: 7c528a58a3d79f03124cbb370f738280bf1114a6
-  VisionCamera: 0bf67d192931cde3a6b82c0ab8dca24e1831079a
+  toolbar-android: 2a73856e98b750d7e71ce4644d3f41cc98211719
+  VisionCamera: 74e523f029eab91f051a1de9bd3f2406847b9785
   Yoga: 32a18c0e845e185f4a2a66ec76e1fd1f958f22fa
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

@@ -1,23 +1,23 @@
-import { StyleSheet } from 'react-native';
-import AppStyle from 'src/config/ColorStyle';
+import { StyleSheet } from "react-native";
+import AppStyle from "src/config/ColorStyle";
 
-import CommonStyles from '../../config/CommonStyles';
+import CommonStyles from "../../config/CommonStyles";
 const local_styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
 
   bgImage: {
     flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
+    resizeMode: "cover",
+    justifyContent: "center",
   },
- 
+
   cameraModalBg: {
     flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
     backgroundColor: AppStyle.color.MODAL_BG_WITH_ALPHA,
   },
   cameraModalView: {
@@ -26,11 +26,12 @@ const local_styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-   // marginLeft: 20,
+    // marginLeft: 20,
     //marginRight: 20,
-  
+
     paddingHorizontal: 5,
-    paddingVertical: 15,
+    // paddingVertical: 15,
+    paddingTop:5,
     // height: '50%',
     width: "100%",
     // height: "40%",
@@ -43,9 +44,19 @@ const local_styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  
+  bottomBtn: {
+    width: 85,
+    height: 80,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  btnText: {
+    fontSize: 16,
+    color: AppStyle.color.COLOR_BLACK,
+    fontFamily: AppStyle.fonts.FONT_BOLD,
+  },
 });
 
-const styles = { ...CommonStyles, ...local_styles }
+const styles = { ...CommonStyles, ...local_styles };
 
 export default styles;

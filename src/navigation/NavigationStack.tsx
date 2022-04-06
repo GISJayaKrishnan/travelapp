@@ -98,7 +98,7 @@
 //           gestureEnabled: false,
 //         }}
 //       />
-     
+
 //      <Stack.Screen name="MapPage" component={MapPage} options={{ headerShown: false ,gestureEnabled : false}} />
 
 //     </AuthStack.Navigator>
@@ -140,20 +140,21 @@
 import * as React from 'react';
 import { NavigationContainer, Theme } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
- import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { navigationRef } from './NavigationService';
 import { StyleSheet, Text, Image, StatusBar, ImageStore, Platform } from "react-native";
- import ImagesStore from '../config/Images';
+import ImagesStore from '../config/Images';
 import SplashScreen from '../screens/splashScreen/index';
 import CameraPage from '../screens/Camera';
 import Profile from '../screens/Profile';
 
-import Home from '../screens/Home';
-import MapPage from '../screens/MapPage';
+// Screens Import
+import Home from 'src/screens/Home';
+import MapPage from 'src/screens/MapPage';
+import RelatedImages from 'src/screens/RelatedImages';
 import images from '../config/Images';
 
-// Screens Import
 
 const Stack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
@@ -177,7 +178,7 @@ const AuthNavigator = () => {
         }}
       />
 
-<AuthStack.Screen
+      <AuthStack.Screen
         name="CameraPage"
         component={CameraPage}
         options={{
@@ -185,21 +186,11 @@ const AuthNavigator = () => {
           gestureEnabled: false
         }}
       />
-     
 
-     <AuthStack.Screen
+
+      <AuthStack.Screen
         name="Home"
         component={Home}
-        options={{
-          headerShown: false,
-          gestureEnabled: false
-        }}
-      />
-
-
-     <AuthStack.Screen
-        name="MapPage"
-        component={MapPage}
         options={{
           headerShown: false,
           gestureEnabled: false
@@ -216,56 +207,56 @@ const AuthNavigator = () => {
 const MainNavigator = () => (
   <BottomTab.Navigator
 
-      initialRouteName='CameraPage'
-      screenOptions={({ route }) => ({
-        tabBarStyle: {
-          height: Platform.OS === "ios" ? 110 : 80
-        },
-        headerShown: false ,
-        tabBarIconStyle: {
-          marginTop: 20
-          
-        },
-        tabBarLabelStyle: {
-          marginBottom:0
-        },
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+    initialRouteName='CameraPage'
+    screenOptions={({ route }) => ({
+      tabBarStyle: {
+        height: Platform.OS === "ios" ? 110 : 80
+      },
+      headerShown: false,
+      tabBarIconStyle: {
+        marginTop: 20
 
-          if (route.name === 'Home') {
-            iconName = focused
-              ? ImagesStore.Destination
-              : ImagesStore.Destination;
-          } else if (route.name === 'Profile') {
-            iconName = focused ? ImagesStore.Profile : ImagesStore.Profile;
-          } else if (route.name === 'CameraPage') {
-            iconName = focused ? ImagesStore.Upload : ImagesStore.Upload;
-          }
-          return <Image source={iconName} style = {route.name == 'CameraPage' ? {width : 70,height :40} :  {width : 50,height : 50}}></Image>;
-        },
-        tabBarActiveTintColor: 'black',
-        tabBarInactiveTintColor: 'gray',
-      })}
+      },
+      tabBarLabelStyle: {
+        marginBottom: 0
+      },
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+
+        if (route.name === 'Home') {
+          iconName = focused
+            ? ImagesStore.Destination
+            : ImagesStore.Destination;
+        } else if (route.name === 'Profile') {
+          iconName = focused ? ImagesStore.Profile : ImagesStore.Profile;
+        } else if (route.name === 'CameraPage') {
+          iconName = focused ? ImagesStore.Upload : ImagesStore.Upload;
+        }
+        return <Image source={iconName} style={route.name == 'CameraPage' ? { width: 70, height: 40 } : { width: 50, height: 50 }}></Image>;
+      },
+      tabBarActiveTintColor: 'black',
+      tabBarInactiveTintColor: 'gray',
+    })}
   >
-   
+
 
     <BottomTab.Screen
       name="Home"
       component={Home}
-      
+
       options={{
         tabBarLabel: ({ focused }) =>
           focused ? <Text style={styles.tabbarStyle}>Home</Text> : <Text style={styles.unselecttabbarStyle}>Home</Text>,
         tabBarIcon: ({ focused }) =>
           focused ? (
-            <Image source={ImagesStore.Destination}  style = {{width : 35,height : 35}}/>
+            <Image source={ImagesStore.Destination} style={{ width: 35, height: 35 }} />
           ) : (
-              <Image source={ImagesStore.Destination}  style = {{width : 30,height : 30}} />
+              <Image source={ImagesStore.Destination} style={{ width: 30, height: 30 }} />
             ),
       }}
     />
 
-<BottomTab.Screen
+    <BottomTab.Screen
       name="CameraPage"
       component={CameraPage}
       options={{
@@ -273,14 +264,14 @@ const MainNavigator = () => (
           focused ? <Text style={styles.tabbarStyle}>Camera</Text> : <Text style={styles.unselecttabbarStyle}>Camera</Text>,
         tabBarIcon: ({ focused }) =>
           focused ? (
-            <Image source={ImagesStore.Upload}  style = { {width : 70,height :40}}/>
+            <Image source={ImagesStore.Upload} style={{ width: 70, height: 40 }} />
           ) : (
-              <Image source={ImagesStore.Upload} style = { {width : 70,height :40}} />
+              <Image source={ImagesStore.Upload} style={{ width: 70, height: 40 }} />
             ),
       }}
     />
 
-<BottomTab.Screen
+    <BottomTab.Screen
       name="Profile"
       component={Profile}
       options={{
@@ -288,9 +279,9 @@ const MainNavigator = () => (
           focused ? <Text style={styles.tabbarStyle}>Pofile</Text> : <Text style={styles.unselecttabbarStyle}>Profile</Text>,
         tabBarIcon: ({ focused }) =>
           focused ? (
-            <Image source={ImagesStore.Profile}  style = {{width : 50,height : 50}} />
+            <Image source={ImagesStore.Profile} style={{ width: 50, height: 50 }} />
           ) : (
-              <Image source={ImagesStore.Profile}  style = {{width : 50,height : 50}} />
+              <Image source={ImagesStore.Profile} style={{ width: 50, height: 50 }} />
             ),
       }}
     />
@@ -311,6 +302,7 @@ const App: React.FC<IProps> = (props: IProps) => {
         <Stack.Screen name="Auth" component={AuthNavigator} options={{ headerShown: false, gestureEnabled: false }} />
         <Stack.Screen name="MapPage" component={MapPage} options={{ headerShown: false, gestureEnabled: false }} />
         <Stack.Screen name='TabBar' component={MainNavigator} options={{ headerShown: false, gestureEnabled: false }} />
+        <Stack.Screen name="RelatedImages" component={RelatedImages} options={{ headerShown: false, gestureEnabled: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

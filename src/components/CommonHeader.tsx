@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AppStyle from 'src/config/CommonStyles';
+import AppStyle from 'src/config/ColorStyle';
 import {
     View,
     Image,
@@ -8,6 +8,8 @@ import {
     StyleSheet
 } from 'react-native';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
 import images from 'src/config/Images';
 import LinearGradient from 'react-native-linear-gradient'
 import NavigationService from 'src/navigation/NavigationService';
@@ -19,8 +21,6 @@ interface HeaderProps {
     showBack?: boolean;
     showRight?: boolean;
     onPress?: any,
-    onPressSaved?: any,
-    // style?:any;
 }
 
 const CustomHeader: React.FC<HeaderProps> = ({
@@ -29,12 +29,11 @@ const CustomHeader: React.FC<HeaderProps> = ({
     showBack = false,
     showRight = false,
     onPress,
-    onPressSaved
 }) => {
     const navigation = useNavigation();
     return (
         <>
-            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#F5AB00', '#F56E00']} style={styles.cardView}>
+            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#2CDFE3', '#05CDD2']} style={styles.cardView}>
                 <View
                     style={styles.header}
                 >
@@ -44,11 +43,7 @@ const CustomHeader: React.FC<HeaderProps> = ({
                         {showBack &&
                             <TouchableOpacity onPress={() => NavigationService.goBack()}
                                 style={styles.headerBackButton}>
-                                <Image
-                                    resizeMode='contain'
-                                    style={{ height: 20, width: 20 }}
-                                    source={images.whiteBackIcon}
-                                />
+                                <Icon name="chevron-left" size={30} color="#000" />
                             </TouchableOpacity>
                         }
 
@@ -60,11 +55,7 @@ const CustomHeader: React.FC<HeaderProps> = ({
                                         navigation.openDrawer();
                                     }}
                                     style={styles.headerMenuButton}>
-                                    <Image
-                                        resizeMode='contain'
-                                        style={{ height: 20, width: 20 }}
-                                        source={images.leftMenuWt}
-                                    />
+                                    <Icon name="map-legend" size={40} color="#000" />
                                 </TouchableOpacity>
 
                             </View>
@@ -87,12 +78,8 @@ const CustomHeader: React.FC<HeaderProps> = ({
                                 </TouchableOpacity>
                                 :
                                 <View style={styles.headerRight}>
-                                    <TouchableOpacity onPress={onPressSaved} >
-                                        <Image
-                                            resizeMode='contain'
-                                            style={{ height: 20, width: 20, marginRight: 25 }}
-                                            source={images.whiteBookmarkIcon}
-                                        />
+                                    <TouchableOpacity >
+                                        <Icon name="map-legend" size={40} color="#fff" />
                                     </TouchableOpacity>
                                 </View>
                             }
@@ -124,7 +111,7 @@ const styles = StyleSheet.create({
         },
         shadowRadius: 2,
         shadowOpacity: 0.1,
-        height: 130,
+        height: 80,
         width: '100%'
 
     },
@@ -133,7 +120,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 80,
-        marginTop: 20,
+        marginTop: 5,
         paddingHorizontal: 10,
         // backgroundColor: 'yellow'
         //backgroundColor: '#fff'
@@ -153,9 +140,9 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
     title: {
-        color: AppStyle.color.COLOR_WHITE,
+        color: AppStyle.color.COLOR_BLACK,
         textAlign: 'center',
-        fontSize: 18,
+        fontSize: 20,
         fontFamily: AppStyle.fonts.FONT_SEMIBOLD,
     },
     semiTitle:
@@ -175,10 +162,10 @@ const styles = StyleSheet.create({
     },
 
     headerBackButton: {
-        height: 25,
-        width: 25,
-        // justifyContent: "center",
-        alignItems: "center",
+        height: 50,
+        width: 50,
+        justifyContent: "center",
+        alignItems: 'flex-start',
         marginLeft: 5,
         //marginTop:25,
     },

@@ -3,7 +3,6 @@ import { KeyboardAvoidingView, Text, TextInput, View, StyleSheet, TouchableOpaci
 import { appendFile } from 'react-native-fs';
 import AppStyle from '../../config/ColorStyle';
 import images from '../../config/Images';
-// import images from '../../config/images';
 import styles from './styles';
 import { Camera, useCameraDevices } from 'react-native-vision-camera';
 import { getLocation } from '../../utils/LocationHelper';
@@ -11,6 +10,9 @@ import { permissionCamerAndGalleryCheck, permissionForMicroPhoneCheck } from '..
 import Geocoder from 'react-native-geocoder';
 import NavigationService from '../../navigation/NavigationService';
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
+import LinearGradient from 'react-native-linear-gradient'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
 const CameraPage = ({ navigation }) => {
     const camera = useRef();
     const [isCameraFlash, setisCameraFlash] = useState('off')
@@ -94,6 +96,11 @@ const CameraPage = ({ navigation }) => {
         NavigationService.navigate("MapPage");
 
     }
+
+    const viewRelatedImages = () => {
+        NavigationService.navigate("RelatedImages");
+    }
+
     if (device == null) return null
     return (
         <View style={styles.container}>
@@ -133,14 +140,32 @@ const CameraPage = ({ navigation }) => {
             >
                 <View style={styles.cameraModalBg}>
                     <View style={styles.cameraModalView}>
+                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#2CDFE3', '#05CDD2']} style={{ height: 40, justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={styles.btnText}>Welcome to Conference Room</Text>
+                        </LinearGradient>
+                        <Image source={images.conference3} style={{ height: 350, width: '100%' }} resizeMode='cover' />
 
-                        <Image source={images.conference3} style = {{height : 350,width : '100%'}} resizeMode ='cover'>
+                        <View style={{ height: 80 }}>
+                            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#E461F5', '#E63EF5']} style={{ height: 80 }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                                    <TouchableOpacity style={styles.bottomBtn} onPress={selfiePointsBtn} >
+                                        <Icon name="map-legend" size={40} color="#fff" />
+                                    </TouchableOpacity>
 
-                        </Image>
-                        <TouchableOpacity style={{ width: 100, height: 50,alignSelf:"flex-end"}} onPress={selfiePointsBtn} >
-                            <Text>See More</Text>
-                        </TouchableOpacity>
+                                    <TouchableOpacity style={styles.bottomBtn} onPress={viewRelatedImages} >
+                                        <Icon name="image" size={40} color="#fff" />
+                                    </TouchableOpacity>
 
+                                    <TouchableOpacity style={styles.bottomBtn} >
+                                        <Icon name="account-group" size={40} color="#fff" />
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity style={styles.bottomBtn}>
+                                        <Icon name="dots-horizontal" size={40} color="#fff" />
+                                    </TouchableOpacity>
+                                </View>
+                            </LinearGradient>
+                        </View>
                     </View>
 
 

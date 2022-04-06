@@ -7,6 +7,7 @@ import images from '../../config/Images';
 import styles from './styles';
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import NavigationService from '../../navigation/NavigationService';
+import { CommonHeader } from 'src/components'
 
 const MapPage = ({ navigation }) => {
   // const [userName, setUserName] = useState('');
@@ -31,18 +32,16 @@ const MapPage = ({ navigation }) => {
     finalDict.push(cor)
 
     let cor1 = {
-
       coordinates: {
-        latitude: 9.882328,
-        longitude: 78.071410,
+        latitude: 9.884484404469093,
+        longitude: 78.0824081600001,
       }
-
-
     }
-    let coordinates: {
-      latitude: 9.882328,
-      longitude: 78.071410,
-    }
+
+    // let coordinates: {
+    //   latitude: ,
+    //   longitude: 78.08234,
+    // }
 
 
     finalDict.push(cor1)
@@ -71,19 +70,19 @@ const MapPage = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backBtn} onPress={backBtn}>
+      <CommonHeader showBack={true} title={'Map Location'} />
+      {/* <TouchableOpacity style={styles.backBtn} onPress={backBtn}>
         <Image source={images.BackIcon} style={styles.backImg}>
 
         </Image>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <MapView
         style={{ flex: 1 }}
         showsUserLocation={true}
-
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: 9.88451,
+          longitude: 78.08234,
           latitudeDelta: 10,
           longitudeDelta: 45
         }}
@@ -104,8 +103,18 @@ const MapPage = ({ navigation }) => {
             {console.log('marker', marker)}
 
             <TouchableOpacity onPress={() => markerClick(marker.coordinates.latitude, marker.coordinates.longitude)} style={{ height: 50, width: 50 }}>
+
               <Image source={images.MapMarker} style={{ height: 30, width: 20 }} />
+
+
+
             </TouchableOpacity>
+
+            <Callout>
+              <TouchableOpacity style={{ width: 150, height: 70,paddingHorizontal:5,paddingVertical:5, borderRadius: 15, borderColor: '#000', borderWidth: 1 }}>
+                <Text >Great innovus conference room</Text>
+              </TouchableOpacity>
+            </Callout>
           </Marker>
         ))}
 
