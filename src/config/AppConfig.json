@@ -1,0 +1,8 @@
+{
+    "HAS_POG": false,
+    "MULTI_IMAGES": false,
+    "VIDEO_INPUT": false,
+    "IS_INTERNET" : true,
+    "SPLASH_TIMEOUT" : 2000,
+    "MARKET": "gbs" // accepted values: gbs, pfna or latam
+}
